@@ -1,0 +1,12 @@
+deeplorenz
+|
+|-----deeplorenz/
+|        |
+|        |----lorenzsystem.py
+|        |----animlorenz.py
+|
+|
+|-----LICENCE
+|-----README
+|-----pyproject.toml
+|-----.gitignore
