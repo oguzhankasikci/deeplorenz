@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "deeplorenz"
 version = "0.1"
-description = "A simple Deep Learnin package that predicts Lorenz attractor's chaotic properties"
+description = "A simple Deep Learning package that predicts Lorenz attractor's chaotic properties"
 authors = [
     {name = "Oguzhan Kasikci", email = "oguzhankasikci@gmail.com"}
 ]
