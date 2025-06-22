@@ -137,3 +137,23 @@ class LorenzClass:
             #axs.legend() 
 
         plt.show()
+
+
+# Example usage ---------------------------------------------------------
+if __name__ == "__main__":
+    
+    lc = LorenzClass()
+    lc.solve()          # integrates with defaults
+    lc.plot_2d()        # 2‑D component plot
+    lc.plot_3d()        # 3‑D trajectory
+    lc.plot2dcomp('x')             
+    
+
+    # Change initial conditions and re‑solve
+    lc.set_initial_value(X0=(5.0, 5.0, 5.0))
+    lc.set_parameters(params= (5.0, 6.0 / 3.0, 12.0),)
+    lc.set_time_grid(0, 30, n_steps=30_000)              
+    lc.plot_2d()    
+    lc.plot_3d()
+    lc.plot2dcomp('x')            
+    
