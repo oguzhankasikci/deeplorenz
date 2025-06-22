@@ -16,7 +16,7 @@ ATTR_INITIAL = [-8., 8., 20.]                # Attractor initial point
 DRAW_EVERY     = 5                           # animation stride
 N_PART         = 500                         # particles per colour
 XLIM, YLIM, ZLIM = (-20, 20), (-30, 30), (0, 50)
-SAVE = 'yes'
+SAVE = 'no'
 
 
 # 2.  Initialise particle clouds
@@ -162,6 +162,10 @@ btn_reset.on_clicked(reset_anim)
 if SAVE == 'yes':
     ani.save('lorenz_mixing_dark.mp4', writer='ffmpeg', dpi=200)
     print('Saved lorenz_mixing_dark.mp4')
+elif SAVE == 'no':
+    print('Run without saving the animation.')
+else:
+    print('Invalid option. Use "yes" or "no".')
 
 plt.tight_layout()
 plt.show()

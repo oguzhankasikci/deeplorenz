@@ -108,6 +108,7 @@ class LorenzClass:
         axs[2].set_ylabel(' Z ')       
         #axs[2].legend()
 
+        plt.savefig("lorenz2dxyz.png")
         fig.tight_layout()
         
         plt.show()
