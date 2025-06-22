@@ -11,6 +11,9 @@ Deep Lorenz is a simple python package (it is at very primitive level now) that 
 - 3d Animation of the Lorenz system with particle flows on the lorenz system orbits.
 - Saves the animation as 'mp4' formatted file
 
+## Images
+![3d animation lorenz](./imags/lorenz_anim.png)
+
 ## Installation
 
 You can install the package from **source** and also you can use directly from source folder by importing. 
