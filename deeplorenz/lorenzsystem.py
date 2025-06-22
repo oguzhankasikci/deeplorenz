@@ -81,6 +81,7 @@ class LorenzClass:
         ax.set_xlabel(' X ')
         ax.set_ylabel(' Y ')
         ax.set_zlabel(' Z ')
+        plt.savefig("lorenz3dxyz.png")
         ax.legend()
         plt.show() 
 
@@ -121,20 +122,23 @@ class LorenzClass:
             axs.plot(self.t, X, label='X data')
             axs.set_title("X variable in Lorenz Attractor  ")
             axs.set_xlabel(' Time ')
-            axs.set_ylabel(' X ')       
+            axs.set_ylabel(' X ')
+            plt.savefig("lorenz2dx.png")       
             #axs.legend()
 
         elif comp == 'y':
             axs.plot(self.t, Y, label='Y data')
             axs.set_title("Y variable in Lorenz Attractor  ")
             axs.set_xlabel(' Time ')
-            axs.set_ylabel(' Y ')       
+            axs.set_ylabel(' Y ')
+            plt.savefig("lorenz2dy.png")       
             #axs.legend()
         else:
             axs.plot(self.t, Z, label='Z data')
             axs.set_title("Z variable in Lorenz Attractor  ")
             axs.set_xlabel(' Time ')
-            axs.set_ylabel(' Z ')       
+            axs.set_ylabel(' Z ')
+            plt.savefig("lorenz2dz.png")
             #axs.legend() 
 
         plt.show()
