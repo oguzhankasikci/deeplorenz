@@ -204,9 +204,9 @@ if __name__ == "__main__":
     lc.plot_2d()        # 2‑D component plot
     lc.plot_3d()        # 3‑D trajectory
     lc.plot2dcomp('x')
-    lc.plot_phase_xy()
-    lc.plot_phase_xz()
-    lc.plot_phase_yz()           
+    lc.plot_phase_xy()  # 2d xy phase plot
+    lc.plot_phase_xz()  # 2d xz phase plot
+    lc.plot_phase_yz()  # 2d yz phase plot        
     
 
     # Change initial conditions and re‑solve
