@@ -12,16 +12,8 @@ Deep Lorenz is a simple python package (it is at very primitive level now) that 
 - Saves the animation as 'mp4' formatted file
 
 ## Images
-<<<<<<< HEAD
-<img src="./images/lorenz_anim.png" alt="3d animation lorenz" width="350"/>
-<img src="./images/lorenz2dxyz.png" alt="3d animation lorenz" width="350"/>
-<img src="./images/phase_xy.png" alt="3d animation lorenz" width="350"/>
-<img src="./images/phase_xz.png" alt="3d animation lorenz" width="350"/>
-=======
-<img src="./images/lorenz_anim.png" alt="3d animation lorenz" width="400"/> <img src="./images/lorenz2dxyz.png" alt="3d animation lorenz" width="415"/>
-<img src="./images/phase_xy.png" alt="3d animation lorenz" width="400"/>
-<img src="./images/phase_xz.png" alt="3d animation lorenz" width="400"/>
->>>>>>> 3ccd6aa (update README.md)
+<img src="./images/lorenz_anim.png" alt="3d animation lorenz" width="350"/> <img src="./images/lorenz2dxyz.png" alt="3d animation lorenz" width="350"/>
+<img src="./images/phase_xy.png" alt="3d animation lorenz" width="350"/> <img src="./images/phase_xz.png" alt="3d animation lorenz" width="350"/>
 
 ## Installation
 
