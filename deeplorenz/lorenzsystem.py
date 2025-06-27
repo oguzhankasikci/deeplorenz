@@ -59,7 +59,7 @@ class LorenzClass:
         return np.array([dx, dy, dz])
 
     def solve(self, rtol=1e-12, atol_scale=1e-12):
-        """ Integrate the ODE system and store the result as shape(3,n_steps)"""
+        """ Integrate the ODE system and store the result as shape(n_steps,3)"""
         atol = atol_scale * np.ones_like(self.X0)
         self._solution = odeint(
             self.lorenz, self.X0, self.t, rtol=rtol, atol=atol
@@ -69,7 +69,7 @@ class LorenzClass:
     def components(self):
         """ Provide the solution components as dictionary ('x': x_val, 'y': y_val, 'z': z_val))"""
         sol = self._solution
-        return dict(x= sol[0,:],y= sol[1,:],z= sol[2,:]) 
+        return dict(x= sol[:,0],y= sol[:,1],z= sol[:,2]) 
     
     ######################### Plotting Part #################
     ## 3d plot of Lorenz Equations 
@@ -143,6 +143,58 @@ class LorenzClass:
 
         plt.show()
 
+    def plot_phase_xy(self):
+        """Plot the (x, y) phase space of the Lorenz system."""
+        if self._solution is None:
+            self.solve()
+        x = self._solution[:, 0]
+        y = self._solution[:, 1]
+
+        plt.figure(figsize=(8, 6))
+        plt.plot(x, y, lw=0.8)
+        plt.xlabel('x')
+        plt.ylabel('y')
+        plt.title('Phase Plot: x vs y')
+        plt.grid(True)
+        plt.tight_layout()
+        plt.show()
+
+    def plot_phase_xz(self):
+        """Plot the (x, z) phase space of the Lorenz system."""
+        if self._solution is None:
+            self.solve()
+        x = self._solution[:, 0]
+        z = self._solution[:, 2]
+
+        plt.figure(figsize=(8, 6))
+        plt.plot(x, z, lw=0.8)
+        plt.xlabel('x')
+        plt.ylabel('z')
+        plt.title('Phase Plot: x vs z')
+        plt.grid(True)
+        plt.tight_layout()
+        plt.show()
+
+    def plot_phase_yz(self):
+        """Plot the (y, z) phase space of the Lorenz system."""
+        if self._solution is None:
+            self.solve()
+        y = self._solution[:, 1]
+        z = self._solution[:, 2]
+
+        plt.figure(figsize=(8, 6))
+        plt.plot(y, z, lw=0.8)
+        plt.xlabel('y')
+        plt.ylabel('z')
+        plt.title('Phase Plot: y vs z')
+        plt.grid(True)
+        plt.tight_layout()
+        plt.show()
+
+
+
+
+
 
 # Example usage ---------------------------------------------------------
 if __name__ == "__main__":
@@ -151,7 +203,10 @@ if __name__ == "__main__":
     lc.solve()          # integrates with defaults
     lc.plot_2d()        # 2‑D component plot
     lc.plot_3d()        # 3‑D trajectory
-    lc.plot2dcomp('x')             
+    lc.plot2dcomp('x')
+    lc.plot_phase_xy()
+    lc.plot_phase_xz()
+    lc.plot_phase_yz()           
     
 
     # Change initial conditions and re‑solve
@@ -160,5 +215,4 @@ if __name__ == "__main__":
     lc.set_time_grid(0, 30, n_steps=30_000)              
     lc.plot_2d()    
     lc.plot_3d()
-    lc.plot2dcomp('x')            
-    
+    lc.plot2dcomp('x')
