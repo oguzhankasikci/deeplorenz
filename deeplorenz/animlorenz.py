@@ -57,6 +57,12 @@ fig = plt.figure(figsize=(9, 7), facecolor='black')
 ax  = fig.add_subplot(111, projection='3d', proj_type='ortho')
 ax.set_facecolor('black')          # 3‑D pane
 
+# Leave margins for the centred time‐read‑out (top) and button bar (bottom)
+fig.subplots_adjust(left=0.05, right=0.95, bottom=0.18, top=0.88)
+
+# Figure‑level title that we update every frame
+time_text = fig.suptitle("", y=0.94, color="white", fontsize=16, ha="center")
+
 # make panes & grids dark
 for axis in (ax.xaxis, ax.yaxis, ax.zaxis):
     axis.set_pane_color((0, 0, 0, 1))
@@ -79,11 +85,10 @@ def update(frame_i):
     idx   = state["frame"]
     time  = idx * DRAW_EVERY * DT          # seconds
     scat._offsets3d = frames_xyz[idx].T
-    ax.set_title(f"Time = {time:5.2f} s",  # ← add “ s” here
-                 fontsize=12, color='w')
+    time_text.set_text(f"Time = {time:5.2f} s")
     if state["running"]:
         state["frame"] = (idx + 1) % n_frames
-    return scat,
+    return scat, time_text
 
 
 ani = animation.FuncAnimation(fig, update, interval=30, blit=False)
@@ -167,5 +172,5 @@ elif SAVE == 'no':
 else:
     print('Invalid option. Use "yes" or "no".')
 
-plt.tight_layout()
+#plt.tight_layout()
 plt.show()

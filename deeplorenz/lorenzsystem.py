@@ -142,7 +142,7 @@ class LorenzClass:
             #axs.legend() 
 
         plt.show()
-
+    # === 2d PHASE PLOTS  ===
     def plot_phase_xy(self):
         """Plot the (x, y) phase space of the Lorenz system."""
         if self._solution is None:
@@ -190,9 +190,6 @@ class LorenzClass:
         plt.grid(True)
         plt.tight_layout()
         plt.show()
-
-
-
 
 
 
