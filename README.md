@@ -1,6 +1,6 @@
 # Deep Lorenz
 
-Deep Lorenz is a simple python package (it is at very primitive level now) that predicts some chaotic properties of the Lorenz system. It solves differential equations of  the system with given parameters and initial values of the system variables. After obtained the solution, the user can  produce several different 3d and 2d phase space plots of the lorenz system. The package gives the user freedom to change the system parameters, the time interval of the system and initial values of system variables (x, y, z) without running again the package creating `LorenzClass` object. Ultimate goal of  this package to predict chaotic properties and reconstruct the chaotic system using deep learning and machine learning methods.
+Deep Lorenz is a simple python package (it is at very primitive level now) that predicts some chaotic properties of the Lorenz system. It solves differential equations of  the system with given parameters and initial values of the system variables. After obtained the solution, the user can  produce several different 3d and 2d phase space plots of the lorenz system. The package gives the user freedom to change the system parameters, the time interval of the system and initial values of system variables (x, y, z) without running again the package creating `LorenzClass` object. Ultimate goal of  this package is to predict chaotic properties and reconstruct the chaotic system using deep learning and machine learning methods.
 
 
 ## Features
