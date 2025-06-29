@@ -46,19 +46,20 @@ class LorenzClass:
             self.sigma = float(params[0])
             self.beta = float(params[1])
             self.rho = float(params[2])
-        self._solution = self.solve()  ## reset the solution
+        self._solution = self.solve()  ## recalculate the solution
         self.plotter.__init__(self)  # Reinitialize the Plotter object with new parameters
 
     def set_time_grid(self, t0, tf, n_steps):
         """ Redefine the time array t and dt."""
         self.t = np.linspace(float(t0), float(tf), int(n_steps), endpoint=True)
         self.dt = np.insert(np.diff(self.t), 0, self.t[1] - self.t[0])
-        self._solution =  self.solve()  ## reset the solution
+        self._solution =  self.solve()  ## recalculate the solution
         self.plotter.__init__(self)  # Reinitialize the Plotter object with new parameters
 
     def set_initial_value(self, X0):
+        """ Update the initial value X0 and recalculate the solution."""
         self.X0 = np.asarray(X0, dtype=float) 
-        self._solution =  self.solve() ## reset the solution
+        self._solution =  self.solve() ## recalculate the solution
         self.plotter.__init__(self)  # Reinitialize the Plotter object with new parameters
 
     ## =========================================================

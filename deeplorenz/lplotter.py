@@ -11,7 +11,7 @@ class Plotter:
         self._solution = self.lorenz_system.solve()
         self.t = self.lorenz_system.t  # Time grid from the Lorenz system
 
-# ===  3d plot of Lorenz Equations === 
+    # ===  3d plot of Lorenz Equations === 
     def plot_3d(self):
         X, Y, Z = self._solution.T     
         ax = plt.figure().add_subplot(projection='3d')
