@@ -96,7 +96,7 @@ class LorenzClass:
     ## ===  Writing to a  'csv' file ===
     def write_csv(self, filename='lorenz_sol.csv'):
         """ Write the solution to a CSV file."""         
-        full_data = np.c_[self.t, self._solution]       
+        full_data = np.c_[self.t, self._solution] # concatanate time and solution arrays     
         df = pd.DataFrame(full_data, columns=['Time','X', 'Y', 'Z'])
 
         # If there is file with same name change the name
