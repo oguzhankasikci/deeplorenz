@@ -95,19 +95,19 @@ class LorenzClass:
         axs[0].plot(self.t,X, label='X data')
         axs[0].set_title("X variable in Lorenz Attractor  ")
         #ax[0].set_xlabel(' Time ')
-        axs[0].set_ylabel(' X ')       
+        axs[0].set_ylabel(' X ',rotation=0)       
         #axs[0].legend()        
 
         axs[1].plot(self.t, Y, label='Y data')
         axs[1].set_title("Y variable in Lorenz Attractor")
         #ax[1].set_xlabel(' Time ')
-        axs[1].set_ylabel(' Y ')       
+        axs[1].set_ylabel(' Y ',rotation=0)       
         #axs[1].legend()
 
         axs[2].plot(self.t, Z, label='Z data')
         axs[2].set_title("Z variable in Lorenz Attractor")
         axs[2].set_xlabel(' Time ')
-        axs[2].set_ylabel(' Z ')       
+        axs[2].set_ylabel(' Z ',rotation=0)       
         #axs[2].legend()
 
         plt.savefig("lorenz2dxyz.png")
@@ -185,7 +185,7 @@ if __name__ == "__main__":
     lc.set_initial_value(X0=(5.0, 5.0, 5.0))
     lc.set_parameters(params= (5.0, 6.0 / 3.0, 12.0),)
     lc.set_time_grid(0, 30, n_steps=30_000)
-                  
+
     lc.plot_2d()    
     lc.plot_3d()
     lc.plotcomp2d('z')  # plot z component over time
