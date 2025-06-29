@@ -11,7 +11,8 @@ class LorenzClass:
                 t_span = (0.0, 50.0),
                 n_steps  = 50_000
                 ):
-        # Import Plotter class for plotting methods 
+        # Import Plotter class here for plotting methods to prevent circular import issues
+        # This assumes that the Plotter class is in a module named lplotter.py         
         from lplotter import Plotter
         
         """ Construct parameters and class variables"""
@@ -46,19 +47,19 @@ class LorenzClass:
             self.beta = float(params[1])
             self.rho = float(params[2])
         self._solution = self.solve()  ## reset the solution
-        self.plotter.__init__(self)  # Reinitialize the plotter with new parameters
+        self.plotter.__init__(self)  # Reinitialize the Plotter object with new parameters
 
     def set_time_grid(self, t0, tf, n_steps):
         """ Redefine the time array t and dt."""
         self.t = np.linspace(float(t0), float(tf), int(n_steps), endpoint=True)
         self.dt = np.insert(np.diff(self.t), 0, self.t[1] - self.t[0])
         self._solution =  self.solve()  ## reset the solution
-        self.plotter.__init__(self)  # Reinitialize the plotter with new parameters
+        self.plotter.__init__(self)  # Reinitialize the Plotter object with new parameters
 
     def set_initial_value(self, X0):
         self.X0 = np.asarray(X0, dtype=float) 
         self._solution =  self.solve() ## reset the solution
-        self.plotter.__init__(self)  # Reinitialize the plotter with new parameters
+        self.plotter.__init__(self)  # Reinitialize the Plotter object with new parameters
 
     ## =========================================================
 
@@ -119,8 +120,8 @@ class LorenzClass:
         df = pd.read_csv(filename)
         self.t = df['Time'].values
         self._solution = df[['X', 'Y', 'Z']].values
-        self.plotter._solution = self._solution # Reinitialize the plotter with new data
-        self.plotter.t = self.t  # Reinitialize the plotter with new data
+        self.plotter._solution = self._solution # Reinitialize the Plotter object with new data
+        self.plotter.t = self.t  # Reinitialize the Plotter object with new data
         return print(f"Solution read from {filename} successfully.")
 
 
@@ -131,7 +132,7 @@ if __name__ == "__main__":
     # lc.solve()          # integrates with defaults
     # lc.plot_2d()        # 2‑D component plot
     # lc.plot_3d()        # 3‑D trajectory  
-    lc.write_csv()      # write solution to csv file
+    # lc.write_csv()      # write solution to csv file
     # lc.plot_phase2d('xz')  # 2d phase plot for x and y)    
     # lc.plotcomp2d('x')  # plot x component over time   
     
