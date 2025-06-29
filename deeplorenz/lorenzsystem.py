@@ -1,5 +1,4 @@
 import numpy as np
-import matplotlib.pyplot as plt
 from scipy.integrate import odeint
 
 
@@ -79,7 +78,7 @@ class LorenzClass:
     def components(self):
         """ Provide the solution components as dictionary ('x': x_val, 'y': y_val, 'z': z_val))"""
         sol = self._solution
-        return dict(x= sol[:,0],y= sol[:,1],z= sol[:,2]) 
+        return dict(x= sol[:,0],y= sol[:,1],z= sol[:,2])
     
 
     ## ===  Plotting Methods ===
