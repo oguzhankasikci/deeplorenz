@@ -38,7 +38,8 @@ class LorenzClass:
     ######################### Class Methods #################
 
     
-    #=== Update class parameters, initial value and time interval ==============
+    ######################### Update Part ##############################
+    ###  updating class parameters, initial value and time interval #####
     def set_parameters(self, params = None):
         """  Update Parameters if only those provided"""
         if params is not None:
