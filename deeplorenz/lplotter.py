@@ -84,7 +84,7 @@ class Plotter:
             self.solve()
         
         # Find indexes of variables
-        v1, v2 = var[0], var[1]
+        v1, v2 = var
         x1 = {'x': 0, 'y': 1, 'z': 2}.get(v1)
         x2 = {'x': 0, 'y': 1, 'z': 2}.get(v2)
 
