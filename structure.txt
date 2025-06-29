@@ -4,7 +4,7 @@ deeplorenz
 |        |
 |        |----lorenzsystem.py
 |        |----animlorenz.py
-|
+|        |----lplotter.py
 |
 |-----LICENCE
 |-----README
