@@ -44,24 +44,28 @@ from deeplorenz import LorenzClass
 
 # Initialize the class
 lc = LorenzClass()
-lc.solve()          # integrates with defaults
-lc.plot_2d()        # 2‑D component plot
-lc.plot_3d()        # 3‑D trajectory  
-    
-lc.plot_phase2d('xy')  # 2d phase plot for x and y)    
-lc.plotcomp2d('x')  # plot x component over time
-lc.plotcomp2d('y')  # plot y component over time
-lc.plotcomp2d('z')  # plot z component over time
+# lc.solve()          # integrates with defaults
+# lc.plot_2d()        # 2‑D component plot
+# lc.plot_3d()        # 3‑D trajectory  
+# lc.write_csv()      # write solution to csv file
+# lc.plot_phase2d('xz')  # 2d phase plot for x and y)    
+# lc.plotcomp2d('x')  # plot x component over time   
     
 
-# Change initial conditions and re‑solve
-lc.set_initial_value(X0=(5.0, 5.0, 5.0))
-lc.set_parameters(params= (5.0, 6.0 / 3.0, 12.0),)
-lc.set_time_grid(0, 30, n_steps=30_000)
-                  
-lc.plot_2d()    
-lc.plot_3d()
-lc.plotcomp2d('z')  # plot z component over time
+# # # Update  initial value and parameters, then solve again and plot 
+# lc.set_initial_value(X0=(20.0, 1.0, 1.0))
+# lc.set_parameters(params= (5.0, 6.0 / 3.0, 1.0))
+# lc.set_time_grid(0, 30, n_steps=30_000)
+# lc.plot_2d()    
+# lc.plot_3d()
+# lc.plotcomp2d('z')  # plot z component over time
+# lc.plot_phase2d('xz')
+# lc.write_csv()
+
+# # # Read from csv file and plot
+# lc.read_csv('lorenz_sol.csv')
+# lc.plot_phase2d('xz')
+# lc.plot_3d()
 
 # Animation: in animlorenz.py file you can change all parameters used  to create animation.
 
