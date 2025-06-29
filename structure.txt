@@ -6,6 +6,8 @@ deeplorenz
 |        |----animlorenz.py
 |        |----lplotter.py
 |
+|-----images/
+|
 |-----LICENCE
 |-----README
 |-----pyproject.toml
