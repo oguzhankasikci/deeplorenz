@@ -36,7 +36,6 @@ class LorenzClass:
 
 
     ######################### Class Methods #################
-
     
     ######################### Update Part ##############################
     ###  updating class parameters, initial value and time interval #####
