@@ -46,17 +46,22 @@ from deeplorenz import LorenzClass
 lc = LorenzClass()
 lc.solve()          # integrates with defaults
 lc.plot_2d()        # 2‑D component plot
-lc.plot_3d()        # 3‑D trajectory
-lc.plot2dcomp('x')             
+lc.plot_3d()        # 3‑D trajectory  
+    
+lc.plot_phase2d('xy')  # 2d phase plot for x and y)    
+lc.plotcomp2d('x')  # plot x component over time
+lc.plotcomp2d('y')  # plot y component over time
+lc.plotcomp2d('z')  # plot z component over time
     
 
-# Change initial conditions and resolve
+# Change initial conditions and re‑solve
 lc.set_initial_value(X0=(5.0, 5.0, 5.0))
 lc.set_parameters(params= (5.0, 6.0 / 3.0, 12.0),)
-lc.set_time_grid(0, 30, n_steps=30_000)              
+lc.set_time_grid(0, 30, n_steps=30_000)
+                  
 lc.plot_2d()    
 lc.plot_3d()
-lc.plot2dcomp('x') 
+lc.plotcomp2d('z')  # plot z component over time
 
 # Animation: in animlorenz.py file you can change all parameters used  to create animation.
 

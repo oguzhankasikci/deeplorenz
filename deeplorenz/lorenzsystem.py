@@ -72,7 +72,8 @@ class LorenzClass:
         return dict(x= sol[:,0],y= sol[:,1],z= sol[:,2]) 
     
     ######################### Plotting Part #################
-    ## 3d plot of Lorenz Equations 
+
+    # ===  3d plot of Lorenz Equations === 
     def plot_3d(self):
         X, Y, Z = self.solve().T     
         ax = plt.figure().add_subplot(projection='3d')
@@ -85,7 +86,7 @@ class LorenzClass:
         ax.legend()
         plt.show() 
 
-    ## Plot all component (X,Y,Z) as subplots  in one figure 
+    # ===  Plot all component (X,Y,Z) as subplots  in one figure === 
     def plot_2d(self):
         X, Y, Z = self.solve().T
 
@@ -114,84 +115,57 @@ class LorenzClass:
         
         plt.show()
             
-    ### Individual Components X,Y and Z of the Lorenz System plotting over time.
-    def plot2dcomp(self,comp):
-        X, Y, Z = self.solve().T
-        fig, axs = plt.subplots(figsize=(8, 3)) # figsize=(horizontal_length ,vertical_length)
-        if comp =='x':
-            axs.plot(self.t, X, label='X data')
-            axs.set_title("X variable in Lorenz Attractor  ")
-            axs.set_xlabel(' Time ')
-            axs.set_ylabel(' X ')
-            plt.savefig("lorenz2dx.png")       
-            #axs.legend()
+    # ===  Individual Components X,Y and Z of the Lorenz System plotting over time. === 
+    def plotcomp2d(self,var):
+        """Plot the 2D component of the Lorenz system for given variable x, y or z."""
+        if self._solution is None:
+            self.solve()
 
-        elif comp == 'y':
-            axs.plot(self.t, Y, label='Y data')
-            axs.set_title("Y variable in Lorenz Attractor  ")
-            axs.set_xlabel(' Time ')
-            axs.set_ylabel(' Y ')
-            plt.savefig("lorenz2dy.png")       
-            #axs.legend()
-        else:
-            axs.plot(self.t, Z, label='Z data')
-            axs.set_title("Z variable in Lorenz Attractor  ")
-            axs.set_xlabel(' Time ')
-            axs.set_ylabel(' Z ')
-            plt.savefig("lorenz2dz.png")
-            #axs.legend() 
+        # Find index of variable
+        x = {'x': 0, 'y': 1, 'z': 2}.get(var)
+        
+        if x is None:
+            raise ValueError("Variable must be one of 'x', 'y', or 'z'.")
 
-        plt.show()
+        data = self._solution[:, x]
+
+        plt.figure(figsize=(8, 3))
+        plt.plot(self.t, data, label=f'{var.upper()} data')
+        plt.title(f"{var.upper()} variable in Lorenz Attractor")
+        plt.xlabel('Time')
+        plt.ylabel(var.upper(),rotation=0)
+        plt.grid(True)
+        plt.tight_layout()
+        plt.savefig(f"lorenz2d{var}.png")
+        plt.show()   
+
     # === 2d PHASE PLOTS  ===
-    def plot_phase_xy(self):
-        """Plot the (x, y) phase space of the Lorenz system."""
+    def plot_phase2d(self,var):
+        """Plot the 2D phase space of the Lorenz system for given components x1 and x2."""
         if self._solution is None:
             self.solve()
-        x = self._solution[:, 0]
-        y = self._solution[:, 1]
+        
+        # Find indexes of variables
+        v1, v2 = var[0], var[1]
+        x1 = {'x': 0, 'y': 1, 'z': 2}.get(v1)
+        x2 = {'x': 0, 'y': 1, 'z': 2}.get(v2)
+
+        if x1 is None or x2 is None:
+            raise ValueError("Components must be one of 'x', 'y', or 'z'.")
+        
+        x1_data = self._solution[:, x1]
+        x2_data = self._solution[:, x2]
 
         plt.figure(figsize=(8, 6))
-        plt.plot(x, y, lw=0.8)
-        plt.xlabel('x')
-        plt.ylabel('y')
-        plt.title('Phase Plot: x vs y')
+        plt.plot(x1_data, x2_data, lw=0.8)
+        plt.xlabel(v1.upper())
+        plt.ylabel(v2.upper(),rotation=0)
+        plt.title(f'Phase Plot: {v1.upper()} vs {v2.upper()}')
         plt.grid(True)
         plt.tight_layout()
         plt.show()
 
-    def plot_phase_xz(self):
-        """Plot the (x, z) phase space of the Lorenz system."""
-        if self._solution is None:
-            self.solve()
-        x = self._solution[:, 0]
-        z = self._solution[:, 2]
-
-        plt.figure(figsize=(8, 6))
-        plt.plot(x, z, lw=0.8)
-        plt.xlabel('x')
-        plt.ylabel('z')
-        plt.title('Phase Plot: x vs z')
-        plt.grid(True)
-        plt.tight_layout()
-        plt.show()
-
-    def plot_phase_yz(self):
-        """Plot the (y, z) phase space of the Lorenz system."""
-        if self._solution is None:
-            self.solve()
-        y = self._solution[:, 1]
-        z = self._solution[:, 2]
-
-        plt.figure(figsize=(8, 6))
-        plt.plot(y, z, lw=0.8)
-        plt.xlabel('y')
-        plt.ylabel('z')
-        plt.title('Phase Plot: y vs z')
-        plt.grid(True)
-        plt.tight_layout()
-        plt.show()
-
-
+    
 
 # Example usage ---------------------------------------------------------
 if __name__ == "__main__":
@@ -199,17 +173,20 @@ if __name__ == "__main__":
     lc = LorenzClass()
     lc.solve()          # integrates with defaults
     lc.plot_2d()        # 2‑D component plot
-    lc.plot_3d()        # 3‑D trajectory
-    lc.plot2dcomp('x')
-    lc.plot_phase_xy()  # 2d xy phase plot
-    lc.plot_phase_xz()  # 2d xz phase plot
-    lc.plot_phase_yz()  # 2d yz phase plot        
+    lc.plot_3d()        # 3‑D trajectory  
+    
+    lc.plot_phase2d('xy')  # 2d phase plot for x and y)    
+    lc.plotcomp2d('x')  # plot x component over time
+    lc.plotcomp2d('y')  # plot y component over time
+    lc.plotcomp2d('z')  # plot z component over time
     
 
     # Change initial conditions and re‑solve
     lc.set_initial_value(X0=(5.0, 5.0, 5.0))
     lc.set_parameters(params= (5.0, 6.0 / 3.0, 12.0),)
-    lc.set_time_grid(0, 30, n_steps=30_000)              
+    lc.set_time_grid(0, 30, n_steps=30_000)
+                  
     lc.plot_2d()    
     lc.plot_3d()
-    lc.plot2dcomp('x')
+    lc.plotcomp2d('z')  # plot z component over time
+    

@@ -7,3 +7,4 @@ build/
 *.eggs/
 .DS_Store
 plan.txt
+*.ipynb
