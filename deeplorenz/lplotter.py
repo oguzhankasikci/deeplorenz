@@ -85,8 +85,8 @@ class Plotter:
         
         # Find indexes of variables
         v1, v2 = var
-        x1 = {'x': 0, 'y': 1, 'z': 2}.get(v1)
-        x2 = {'x': 0, 'y': 1, 'z': 2}.get(v2)
+        comps = {'x': 0, 'y': 1, 'z': 2}
+        x1, x2 = comps.get(v1), comps.get(v2)
 
         if x1 is None or x2 is None:
             raise ValueError("Components must be one of 'x', 'y', or 'z'.")
