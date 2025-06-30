@@ -5,8 +5,7 @@ import matplotlib.pyplot as plt
 class Plotter:
 
     def __init__(self, parent):
-        """Initialize the Plotter with a Lorenz system instance."""
-        #self.lorenz_system = parent
+        """Initialize the Plotter with a Lorenz system instance."""        
         self._solution = parent.solve()
         self.t = parent.t  # Time grid from the Lorenz system
 
