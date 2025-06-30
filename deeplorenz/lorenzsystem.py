@@ -90,6 +90,7 @@ class LorenzClass:
     ## ===  Plotting Methods ===
     def __getattr__(self, name: str):
         """ Redirects to the Plotter instance for plotting methods."""
+        """ Ex: This allows you can use lc.plot_2d() instead of lc.plotter.plot_2d()"""
         if hasattr(self.plotter, name):
             return getattr(self.plotter, name)
         raise AttributeError(f"'{self.__class__.__name__}' object has no attribute '{name}'")
