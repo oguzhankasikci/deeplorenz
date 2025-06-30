@@ -145,11 +145,11 @@ if __name__ == "__main__":
     # lc.plot_3d()
     # lc.plotcomp2d('z')  # plot z component over time
     # lc.plot_phase2d('xz')
-    lc.write_csv()
+    # lc.write_csv()
 
     # # # Read from csv file and plot
-    lc.read_csv('./data/lorenz_sol.csv')
-    lc.plot_phase2d('xz')
+    # lc.read_csv('./data/lorenz_sol.csv')
+    # lc.plot_phase2d('xz')
     # lc.plot_3d()
 
     
