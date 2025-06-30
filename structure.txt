@@ -8,6 +8,7 @@ deeplorenz
 |
 |-----images/
 |
+|-----data/ 
 |-----LICENCE
 |-----README
 |-----pyproject.toml
