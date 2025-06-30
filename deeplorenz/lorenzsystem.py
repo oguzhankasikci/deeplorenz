@@ -96,17 +96,17 @@ class LorenzClass:
         raise AttributeError(f"'{self.__class__.__name__}' object has no attribute '{name}'")
     
     ## ===  Writing to a  'csv' file ===
-    def write_csv(self, filename='lorenz_sol.csv'):
+    def write_csv(self, filename='./data/lorenz_sol.csv'):
         """ Write the solution to a CSV file."""         
         full_data = np.c_[self.t, self._solution] # concatanate time and solution arrays     
         df = pd.DataFrame(full_data, columns=['Time','X', 'Y', 'Z'])
 
         # If there is file with same name change the name
-        for fname in os.listdir('.'):
+        for fname in os.listdir('./data'):
             if fname.endswith('.csv'):  
-                filename = fname.replace('.csv', '_new.csv')
+                filename = './data/' + fname.replace('.csv', '_new.csv')
                 df.to_csv(filename, index=False)
-                print(f"File {filename} already exists. Renaming to {filename}.")
+                print(f"File {fname} already exists. Renaming to {filename}.")
                 break            
          
         # Write to csv
@@ -116,7 +116,7 @@ class LorenzClass:
     # ===  Reading from a 'csv' file ===
     # Note: This method assumes the CSV file has columns 'Time', 'X', 'Y', 'Z'
     # and that the data is in the same format as produced by write
-    def read_csv(self, filename='lorenz_sol.csv'):
+    def read_csv(self, filename='./data/lorenz_sol.csv'):
         """ Read the solution from a CSV file."""
         df = pd.read_csv(filename)
         self.t = df['Time'].values
@@ -130,8 +130,8 @@ class LorenzClass:
 if __name__ == "__main__":
     
     lc = LorenzClass()
-    lc.solve()          # integrates with defaults
-    lc.plot_2d()        # 2‑D component plot
+    # lc.solve()          # integrates with defaults
+    # lc.plot_2d()        # 2‑D component plot
     # lc.plot_3d()        # 3‑D trajectory  
     # lc.write_csv()      # write solution to csv file
     # lc.plot_phase2d('xz')  # 2d phase plot for x and y)    
@@ -145,11 +145,11 @@ if __name__ == "__main__":
     # lc.plot_3d()
     # lc.plotcomp2d('z')  # plot z component over time
     # lc.plot_phase2d('xz')
-    # lc.write_csv()
+    lc.write_csv()
 
     # # # Read from csv file and plot
-    # lc.read_csv('lorenz_sol.csv')
-    # lc.plot_phase2d('xz')
+    lc.read_csv('./data/lorenz_sol.csv')
+    lc.plot_phase2d('xz')
     # lc.plot_3d()
 
     
