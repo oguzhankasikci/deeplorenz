@@ -1,5 +1,6 @@
 import numpy as np
 from scipy.integrate import odeint
+from lplotter import Plotter
 import pandas as pd
 import os
 
@@ -11,7 +12,7 @@ class LorenzClass:
                 t_span = (0.0, 50.0),
                 n_steps  = 50_000
                 ):
-        from lplotter import Plotter   # local import avoids circular dependency
+        # from lplotter import Plotter   # local import avoids circular dependency
         
         """ Construct parameters and class variables"""
         # Lorenz system parameters
@@ -133,10 +134,9 @@ if __name__ == "__main__":
     # lc.plot_3d()        # 3‑D trajectory  
     # lc.write_csv()      # write solution to csv file
     # lc.plot_phase2d('xz')  # 2d phase plot for x and y)    
-    # lc.plotcomp2d('x')  # plot x component over time   
-    
+    # lc.plotcomp2d('x')  # plot x component over time
 
-    # # # Update  initial value and parameters, then solve again and plot 
+    # # # Update  initial value and parameters, then solve again and plot
     # lc.set_initial_value(X0=(20.0, 1.0, 1.0))
     # lc.set_parameters(params= (5.0, 6.0 / 3.0, 1.0))
     # lc.set_time_grid(0, 30, n_steps=30_000)
