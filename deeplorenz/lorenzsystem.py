@@ -11,9 +11,7 @@ class LorenzClass:
                 t_span = (0.0, 50.0),
                 n_steps  = 50_000
                 ):
-        # Import Plotter class here for plotting methods to prevent circular import issues
-        # This assumes that the Plotter class is in a module named lplotter.py         
-        from lplotter import Plotter
+        from lplotter import Plotter   # local import avoids circular dependency
         
         """ Construct parameters and class variables"""
         # Lorenz system parameters
@@ -130,8 +128,8 @@ class LorenzClass:
 if __name__ == "__main__":
     
     lc = LorenzClass()
-    # lc.solve()          # integrates with defaults
-    # lc.plot_2d()        # 2‑D component plot
+    lc.solve()          # integrates with defaults
+    lc.plot_2d()        # 2‑D component plot
     # lc.plot_3d()        # 3‑D trajectory  
     # lc.write_csv()      # write solution to csv file
     # lc.plot_phase2d('xz')  # 2d phase plot for x and y)    

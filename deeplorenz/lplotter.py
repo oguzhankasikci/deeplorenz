@@ -5,11 +5,11 @@ from lorenzsystem  import LorenzClass
 
 class Plotter:
 
-    def __init__(self, parent: 'LorenzClass'):
+    def __init__(self, parent):
         """Initialize the Plotter with a Lorenz system instance."""
-        self.lorenz_system = parent
-        self._solution = self.lorenz_system.solve()
-        self.t = self.lorenz_system.t  # Time grid from the Lorenz system
+        #self.lorenz_system = parent
+        self._solution = parent.solve()
+        self.t = parent.t  # Time grid from the Lorenz system
 
     # ===  3d plot of Lorenz Equations === 
     def plot_3d(self):
