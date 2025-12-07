@@ -37,7 +37,7 @@ pip install .
 
 You can use `deeplorenz` to obtain 3d or 2d plots of the lorenz system after installation.
 
-### Example: 
+### Examples: 
 
 ```python
 from deeplorenz import LorenzClass
