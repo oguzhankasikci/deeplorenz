@@ -29,7 +29,7 @@ pip install .
 ```
 
 ## Dependencies
-- numpy>=1.21,<2.0.
+- bumpy>=1.21,<2.0.
 - scipy>=1.7.
 - matplotlib>=3.7.
   
