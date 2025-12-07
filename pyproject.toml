@@ -10,7 +10,7 @@ authors = [
     {name = "Oguzhan Kasikci", email = "oguzhankasikci@gmail.com"}
 ]
 license = {text = "MIT"}
-readme = "README.md"
+readme = "README.md "
 requires-python = ">=3.11"
 dependencies = [
     "numpy>=1.21,<2.0",
